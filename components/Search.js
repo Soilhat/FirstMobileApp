@@ -30,11 +30,6 @@ class Search extends React.Component {
           renderItem={({item}) => <FilmItem film={item}/>}
         />
       </View>
-      /*<View style={{ flex: 1, backgroundColor: 'yellow', marginTop: 26 }}>
-        <View style={{ flex: 1, backgroundColor: 'red' }}></View>
-        <View style={{ flex: 2, backgroundColor: 'green' }}></View>
-        <View style={{ flex: 3, backgroundColor: 'blue' }}></View>
-      </View>*/
     )
   }
 }
