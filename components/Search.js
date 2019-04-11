@@ -1,18 +1,49 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, Button } from 'react-native'
+import { StyleSheet, View, TextInput, Button, Text, FlatList } from 'react-native'
+import films from '../Helpers/filmsData'
+import FilmItem from './FilmItem'
+import {getFilms} from '../API/TMDBApi'
 
 class Search extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this._films = []
+  }
+
+  _loadFilms() {
+    getFilms("star").then(data => {
+      console.log(data)
+      this._films = data.results
+      this.forceUpdate()
+    });
+  }
+
   render() {
     return (
-      <View style={{ marginTop: 20 }}>
-        <TextInput style={{ styles.textinput }} placeholder='Titre du film'/>
-        <Button title='Rechercher' onPress={() => {}}/>
+      <View style={styles.main_container}>
+        <TextInput style={ styles.textinput } placeholder='Titre du film'/>
+        <Button title='Rechercher' onPress={() => this._loadFilms()}/>
+        <FlatList
+          data={this._films}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) => <FilmItem film={item}/>}
+        />
       </View>
+      /*<View style={{ flex: 1, backgroundColor: 'yellow', marginTop: 26 }}>
+        <View style={{ flex: 1, backgroundColor: 'red' }}></View>
+        <View style={{ flex: 2, backgroundColor: 'green' }}></View>
+        <View style={{ flex: 3, backgroundColor: 'blue' }}></View>
+      </View>*/
     )
   }
 }
 
 const styles = StyleSheet.create({
+  main_container: {
+    flex: 1,
+    marginTop: 35
+  },
   textinput: {
     marginLeft: 5,
     marginRight: 5,
