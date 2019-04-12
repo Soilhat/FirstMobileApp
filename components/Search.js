@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
 import FilmItem from './FilmItem'
-import {getFilms} from '../API/TMDBApi'
+import { getFilms } from '../API/TMDBApi'
 
 class Search extends React.Component {
 
