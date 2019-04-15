@@ -6,7 +6,6 @@ class FilmItem extends React.Component {
 
 
   _displayFavoriteImage() {
-    console.log(this.props.isFavorite)
     if (this.props.isFavorite) {
       // Film dans nos favoris
       return (
